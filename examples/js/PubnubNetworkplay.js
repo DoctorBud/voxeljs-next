@@ -1,4 +1,4 @@
-import {Vector3,} from "three"
+import {Vector3,} from "../../node_modules/three/build/three.module.js"
 import {ECSComp} from '../../src/ECSComp.js'
 
 const pubkey = 'pub-c-0a0c49cb-8e11-4b10-8347-3af6cf048b46';

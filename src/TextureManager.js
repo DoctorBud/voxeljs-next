@@ -25,7 +25,7 @@ export class TextureManager {
         this.canvas = document.createElement('canvas')
         this.canvas.setAttribute('id','texture')
         document.getElementsByTagName('body')[0].appendChild(this.canvas)
-        this.aoEnabled = opts.aoEnabled || false
+        this.aoEnabled = (opts && opts.aoEnabled) || false
         this.canvas.width = 128;
         this.canvas.height = 128;
         this.canvas.style.width = '512px';

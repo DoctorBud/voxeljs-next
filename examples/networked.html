@@ -83,6 +83,13 @@
     import {TextureManager} from '../src/TextureManager.js'
     import {WebRTCAudioChat} from './js/WebRTCAudioChat.js'
     import {RemotePlayersProxy} from './js/RemotePlayersProxy.js'
+    import WebXRBoilerPlate, {FULLSCREEN_ENTERED, FULLSCREEN_EXITED} from "../node_modules/webxr-boilerplate/WebXRBoilerPlate.js"
+    import {Mesh, MeshLambertMaterial, PlaneGeometry,
+        CubeGeometry,
+        Color, DirectionalLight, AmbientLight, Vector3, TextureLoader, Group} from "../node_modules/three/build/three.module.js"
+    import {PhysHandler} from '../src/PhysHandler.js'
+    import {SimpleMeshCollider} from "../src/SimpleMeshCollider.js"
+    import {PubnubNetworkplay} from "./js/PubnubNetworkplay.js"
 
     const $ = (sel) => document.querySelector(sel)
     const $$ = (sel) => document.querySelectorAll(sel)
@@ -103,7 +110,7 @@
         app.player = new Mesh()
         app.player.position.y = 30
         app.player_phys = new PhysHandler(app, app.player,[new SimpleMeshCollider(app)])
-        app.comps.push(player_phys)
+        app.comps.push(app.player_phys)
 
 
         // ========= event handlers
@@ -165,10 +172,39 @@
                 if(chunk) rebuildMesh(chunk)
             })
         })
-
-        return app.textureManager.load(['grass','brick','dirt','anim','tnt','arrows'])
+        console.log(app.textureManager);
+        return app.textureManager.loadTextures([
+            {
+                src:'./textures/kenneynl/tiles/grass_top.png'
+            },
+            {
+                src:'./textures/kenneynl/tiles/dirt.png'
+            },
+            // {
+            //     src:'./textures/kenneynl/tiles/ice.png',
+            // },
+            {
+                src:'./textures/kenneynl/tiles/lava.png',
+            },
+            {
+                src:'./textures/kenneynl/tiles/stone.png',
+            },
+            {
+                src:'./textures/kenneynl/tiles/sand.png',
+            },
+            {
+                src:'./textures/tnt.png',
+            },
+            {
+                src:'./textures/heart.png',
+            },
+            {
+                src:'./textures/tnt.png',
+            },
+        ])
     }).then(()=>{
-        app.rebuildAllMeshes()
+        console.log(app);
+        // app.chunkManager.rebuildAllMeshes()
     }).catch(e => {
         console.log('ERROR',e)
     })

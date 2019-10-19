@@ -1,4 +1,4 @@
-import {Vector3, Mesh, MeshLambertMaterial, SphereBufferGeometry} from "three"
+import {Vector3, Mesh, MeshLambertMaterial, SphereBufferGeometry} from "../../node_modules/three/build/three.module.js"
 import {ECSComp} from '../../src/ECSComp.js'
 
 const BUMP_HEIGHT = new Vector3(0,1,0)
